@@ -1,47 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using Unity.VisualScripting;
 using UnityEngine;
-using sceneManagement;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
-
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    public int Level = 0;
+    public int Score = 0;
+    public int Lives = 3;
 
     void Awake()
     {
-    public int level = 1;
-    public int score = 0;
-    public int lives = 3;
+        DontDestroyOnLoad(this.gameObject);
+      
 
-    public GameManager(int level)
-    {
-        this.level = level;
     }
+    private void Start()
+    {
+        NewGame();
 
-}
+    }
+    private void NewGame()
+    {
+        this.Score = 0;
+        this.Lives = 3;
+
+        LoadLevel(1);
+
+    }
+    private void LoadLevel(int Level)
+    {
+        this.Level = Level;
+
+        SceneManager.LoadScene("Level" + Level);
+    }
     
-
-
-//private int OnLevelWasLoaded(int level)
-//{
-//this.level = level 1;
-//SceneManager.LoadScene(level);
-//}
-
-//}
-
-
-//}
-
-// Update is called once per frame
-void Update()
-{
-
-}
 }
